@@ -24,8 +24,11 @@ function getYesterdayStr() {
 function loadState(): GameState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
+    console.log("📦 Loading game state:", raw ? "Found saved data" : "No saved data");
+
     if (raw) {
       const state = JSON.parse(raw) as GameState;
+      console.log("📊 Loaded state:", { xp: state.xp, streak: state.streak, lastPlayedDate: state.lastPlayedDate });
       const today = getTodayStr();
 
       // Ensure completedQuestionIds exists (migration)
@@ -37,18 +40,22 @@ function loadState(): GameState {
       if (state.lastPlayedDate !== today) {
         // New day - reset daily stats
         const isYesterday = state.lastPlayedDate === getYesterdayStr();
+        const newStreak = isYesterday ? state.streak : (state.lastPlayedDate ? 0 : state.streak);
+        console.log("📅 New day detected. Yesterday?", isYesterday, "New streak:", newStreak);
         return {
           ...state,
           todayCompleted: false,
           correctToday: 0,
           totalToday: 0,
-          // If they missed more than yesterday, streak resets on next completion
-          streak: isYesterday ? state.streak : (state.lastPlayedDate ? 0 : state.streak),
+          streak: newStreak,
         };
       }
       return state;
     }
-  } catch { /* ignore */ }
+  } catch (error) {
+    console.error("❌ Error loading game state:", error);
+  }
+  console.log("🆕 Starting with fresh state");
   return {
     xp: 0, streak: 0, todayCompleted: false,
     correctToday: 0, totalToday: 0, lastPlayedDate: null,
@@ -57,7 +64,12 @@ function loadState(): GameState {
 }
 
 function saveState(state: GameState) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    console.log("💾 Game state saved:", { xp: state.xp, streak: state.streak, completedQuestions: state.completedQuestionIds.length });
+  } catch (error) {
+    console.error("❌ Error saving game state:", error);
+  }
 }
 
 export function useGameState() {
