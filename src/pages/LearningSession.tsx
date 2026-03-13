@@ -9,11 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function LearningSession() {
   const navigate = useNavigate();
-  const { addXP, completeDailyMission, currentStage, xp } = useGameState();
+  const { addXP, completeDailyMission, currentStage, xp, completedQuestionIds } = useGameState();
 
   const [questions] = useState<Question[]>(() => [
-    ...getRandomQuestions("latin", 5),
-    ...getRandomQuestions("math", 5),
+    ...getRandomQuestions("latin", 5, completedQuestionIds),
+    ...getRandomQuestions("math", 5, completedQuestionIds),
   ]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [correct, setCorrect] = useState(0);
