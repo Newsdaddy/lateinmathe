@@ -23,7 +23,7 @@ export default function LearningSession() {
 
   const handleAnswer = useCallback((isCorrect: boolean) => {
     if (isCorrect) setCorrect(c => c + 1);
-    addXP(isCorrect);
+    addXP(isCorrect, questions[currentIndex].id);
 
     setTimeout(() => {
       if (currentIndex + 1 >= questions.length) {
