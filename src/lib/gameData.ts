@@ -31,112 +31,65 @@ export const CHARACTER_STAGES: CharacterStage[] = [
 ];
 
 export const LATIN_QUESTIONS: Question[] = [
-  {
-    id: "l1", subject: "latin", type: "multiple_choice",
-    question: "Was bedeutet 'amicus'?",
-    options: ["Feind", "Freund", "Lehrer", "König"],
-    correctAnswer: "Freund",
-    hint: "Denke an das Wort 'amical' 🙂", difficulty: 1,
-  },
-  {
-    id: "l2", subject: "latin", type: "multiple_choice",
-    question: "Welcher Kasus ist 'dominum'?",
-    options: ["Nominativ", "Genitiv", "Akkusativ", "Dativ"],
-    correctAnswer: "Akkusativ",
-    hint: "Die Endung '-um' ist ein wichtiger Hinweis!", difficulty: 1,
-  },
-  {
-    id: "l3", subject: "latin", type: "multiple_choice",
-    question: "'Puella' gehört zur...",
-    options: ["a-Deklination", "o-Deklination", "konsonantischen Deklination", "u-Deklination"],
-    correctAnswer: "a-Deklination",
-    hint: "Schau dir die Endung '-a' an 🙂", difficulty: 1,
-  },
-  {
-    id: "l4", subject: "latin", type: "translate",
-    question: "Was bedeutet 'Magister discipulos docet'?",
-    options: ["Der Schüler lehrt den Lehrer", "Der Lehrer unterrichtet die Schüler", "Die Schüler lernen alleine", "Der Lehrer schläft"],
-    correctAnswer: "Der Lehrer unterrichtet die Schüler",
-    hint: "Magister = Lehrer, docet = lehrt", difficulty: 2,
-  },
-  {
-    id: "l5", subject: "latin", type: "multiple_choice",
-    question: "Wie lautet der Genitiv Singular von 'servus'?",
-    options: ["servo", "servi", "servum", "servis"],
-    correctAnswer: "servi",
-    hint: "Die o-Deklination hat im Genitiv die Endung '-i'", difficulty: 2,
-  },
-  {
-    id: "l6", subject: "latin", type: "multiple_choice",
-    question: "'Laudo' bedeutet...",
-    options: ["ich laufe", "ich lobe", "ich lese", "ich lerne"],
-    correctAnswer: "ich lobe",
-    hint: "Denke an 'Lob' auf Deutsch!", difficulty: 1,
-  },
-  {
-    id: "l7", subject: "latin", type: "translate",
-    question: "Übersetze: 'Roma magna est.'",
-    options: ["Rom ist groß.", "Der Römer ist stark.", "Rom war groß.", "Die Römer sind groß."],
-    correctAnswer: "Rom ist groß.",
-    hint: "magna = groß, est = ist", difficulty: 1,
-  },
+  { id: "l1", subject: "latin", type: "multiple_choice", question: "Was bedeutet 'amicus'?", options: ["Feind", "Freund", "Lehrer", "König"], correctAnswer: "Freund", hint: "Denke an das Wort 'amical' 🙂", difficulty: 1 },
+  { id: "l2", subject: "latin", type: "multiple_choice", question: "Welcher Kasus ist 'dominum'?", options: ["Nominativ", "Genitiv", "Akkusativ", "Dativ"], correctAnswer: "Akkusativ", hint: "Die Endung '-um' ist ein wichtiger Hinweis!", difficulty: 1 },
+  { id: "l3", subject: "latin", type: "multiple_choice", question: "'Puella' gehört zur...", options: ["a-Deklination", "o-Deklination", "konsonantischen Deklination", "u-Deklination"], correctAnswer: "a-Deklination", hint: "Schau dir die Endung '-a' an 🙂", difficulty: 1 },
+  { id: "l4", subject: "latin", type: "translate", question: "Was bedeutet 'Magister discipulos docet'?", options: ["Der Schüler lehrt den Lehrer", "Der Lehrer unterrichtet die Schüler", "Die Schüler lernen alleine", "Der Lehrer schläft"], correctAnswer: "Der Lehrer unterrichtet die Schüler", hint: "Magister = Lehrer, docet = lehrt", difficulty: 2 },
+  { id: "l5", subject: "latin", type: "multiple_choice", question: "Wie lautet der Genitiv Singular von 'servus'?", options: ["servo", "servi", "servum", "servis"], correctAnswer: "servi", hint: "Die o-Deklination hat im Genitiv die Endung '-i'", difficulty: 2 },
+  { id: "l6", subject: "latin", type: "multiple_choice", question: "'Laudo' bedeutet...", options: ["ich laufe", "ich lobe", "ich lese", "ich lerne"], correctAnswer: "ich lobe", hint: "Denke an 'Lob' auf Deutsch!", difficulty: 1 },
+  { id: "l7", subject: "latin", type: "translate", question: "Übersetze: 'Roma magna est.'", options: ["Rom ist groß.", "Der Römer ist stark.", "Rom war groß.", "Die Römer sind groß."], correctAnswer: "Rom ist groß.", hint: "magna = groß, est = ist", difficulty: 1 },
+  { id: "l8", subject: "latin", type: "multiple_choice", question: "Was bedeutet 'aqua'?", options: ["Feuer", "Luft", "Wasser", "Erde"], correctAnswer: "Wasser", hint: "Denke an 'Aquarium' 🐟", difficulty: 1 },
+  { id: "l9", subject: "latin", type: "multiple_choice", question: "Welche Endung hat der Dativ Singular der a-Deklination?", options: ["-am", "-ae", "-a", "-as"], correctAnswer: "-ae", hint: "Genitiv und Dativ Singular sind in der a-Deklination gleich!", difficulty: 2 },
+  { id: "l10", subject: "latin", type: "multiple_choice", question: "Was bedeutet 'terra'?", options: ["Stern", "Erde/Land", "Meer", "Himmel"], correctAnswer: "Erde/Land", hint: "Denke an 'Terrasse' oder 'Terrain'", difficulty: 1 },
+  { id: "l11", subject: "latin", type: "translate", question: "Was bedeutet 'Puer in horto ludit'?", options: ["Das Mädchen spielt im Garten", "Der Junge spielt im Garten", "Der Junge arbeitet im Garten", "Der Junge schläft im Garten"], correctAnswer: "Der Junge spielt im Garten", hint: "puer = Junge, ludit = spielt, hortus = Garten", difficulty: 2 },
+  { id: "l12", subject: "latin", type: "multiple_choice", question: "Was ist die 1. Person Singular Präsens von 'amare'?", options: ["amas", "amo", "amat", "amant"], correctAnswer: "amo", hint: "Die 1. Person Singular endet auf '-o'", difficulty: 1 },
+  { id: "l13", subject: "latin", type: "multiple_choice", question: "Was bedeutet 'schola'?", options: ["Schüler", "Lehrer", "Schule", "Buch"], correctAnswer: "Schule", hint: "Fast wie im Deutschen! 📚", difficulty: 1 },
+  { id: "l14", subject: "latin", type: "multiple_choice", question: "Welcher Kasus antwortet auf 'Wessen?'", options: ["Nominativ", "Genitiv", "Dativ", "Akkusativ"], correctAnswer: "Genitiv", hint: "Der Kasus des Besitzes", difficulty: 1 },
+  { id: "l15", subject: "latin", type: "multiple_choice", question: "Was bedeutet 'magnus'?", options: ["klein", "schnell", "groß", "schön"], correctAnswer: "groß", hint: "Denke an 'Magnum' (etwas Großes)", difficulty: 1 },
+  { id: "l16", subject: "latin", type: "translate", question: "Übersetze: 'Ancilla cenam parat.'", options: ["Die Herrin kocht das Essen.", "Die Magd bereitet das Essen vor.", "Die Magd isst zu Abend.", "Die Sklavin kauft Essen."], correctAnswer: "Die Magd bereitet das Essen vor.", hint: "ancilla = Magd, cena = Essen, parat = bereitet vor", difficulty: 2 },
+  { id: "l17", subject: "latin", type: "multiple_choice", question: "Was bedeutet 'via'?", options: ["Leben", "Weg/Straße", "Kraft", "Wahrheit"], correctAnswer: "Weg/Straße", hint: "Im Italienischen heißt die Straße auch 'via'", difficulty: 1 },
+  { id: "l18", subject: "latin", type: "multiple_choice", question: "Wie heißt der Ablativ Singular von 'dominus'?", options: ["dominum", "domino", "domini", "dominis"], correctAnswer: "domino", hint: "Der Ablativ Singular der o-Deklination endet auf '-o'", difficulty: 2 },
+  { id: "l19", subject: "latin", type: "multiple_choice", question: "Was bedeutet 'liber'?", options: ["frei / Buch", "Kinder", "Freiheit", "Bibliothek"], correctAnswer: "frei / Buch", hint: "Liber hat zwei Bedeutungen – wie 'Liberté' und 'Library'", difficulty: 2 },
+  { id: "l20", subject: "latin", type: "translate", question: "Was bedeutet 'Senator in foro ambulat'?", options: ["Der Senator läuft im Forum.", "Der Senator sitzt im Forum.", "Der Senator spricht im Forum.", "Der Senator schläft im Forum."], correctAnswer: "Der Senator läuft im Forum.", hint: "ambulat = er geht/läuft (wie 'Ambulanz')", difficulty: 2 },
+  { id: "l21", subject: "latin", type: "multiple_choice", question: "Was ist der Plural von 'puella'?", options: ["puellae", "puellas", "puellam", "puellis"], correctAnswer: "puellae", hint: "Nominativ Plural der a-Deklination = '-ae'", difficulty: 1 },
+  { id: "l22", subject: "latin", type: "multiple_choice", question: "Was bedeutet 'nauta'?", options: ["Natur", "Seemann", "Nacht", "Nation"], correctAnswer: "Seemann", hint: "Denke an 'Nautik' ⛵", difficulty: 1 },
 ];
 
 export const MATH_QUESTIONS: Question[] = [
-  {
-    id: "m1", subject: "math", type: "multiple_choice",
-    question: "Was ist 3/4 + 1/4?",
-    options: ["1/2", "1", "4/8", "3/4"],
-    correctAnswer: "1",
-    hint: "Gleiche Nenner – einfach die Zähler addieren! 🙂", difficulty: 1,
-  },
-  {
-    id: "m2", subject: "math", type: "multiple_choice",
-    question: "Löse: 2x + 6 = 14",
-    options: ["x = 3", "x = 4", "x = 5", "x = 8"],
-    correctAnswer: "x = 4",
-    hint: "Erst -6, dann durch 2 teilen", difficulty: 2,
-  },
-  {
-    id: "m3", subject: "math", type: "multiple_choice",
-    question: "Was ist 0,25 als Bruch?",
-    options: ["1/2", "1/3", "1/4", "1/5"],
-    correctAnswer: "1/4",
-    hint: "25 von 100 – vereinfache! 🙂", difficulty: 1,
-  },
-  {
-    id: "m4", subject: "math", type: "multiple_choice",
-    question: "Wie viel Prozent sind 3 von 12?",
-    options: ["20%", "25%", "30%", "33%"],
-    correctAnswer: "25%",
-    hint: "3 ÷ 12 = ? Dann mal 100", difficulty: 2,
-  },
-  {
-    id: "m5", subject: "math", type: "multiple_choice",
-    question: "Ein Dreieck hat Winkel von 60° und 80°. Wie groß ist der dritte Winkel?",
-    options: ["30°", "40°", "50°", "60°"],
-    correctAnswer: "40°",
-    hint: "Alle Winkel zusammen = 180°", difficulty: 2,
-  },
-  {
-    id: "m6", subject: "math", type: "multiple_choice",
-    question: "Was ist 2/3 × 3/4?",
-    options: ["6/12", "1/2", "5/7", "2/4"],
-    correctAnswer: "1/2",
-    hint: "Zähler × Zähler, Nenner × Nenner, dann kürzen!", difficulty: 2,
-  },
-  {
-    id: "m7", subject: "math", type: "multiple_choice",
-    question: "Berechne: (-3) + 7",
-    options: ["10", "-10", "4", "-4"],
-    correctAnswer: "4",
-    hint: "Vom negativen Bereich 7 Schritte nach rechts", difficulty: 1,
-  },
+  { id: "m1", subject: "math", type: "multiple_choice", question: "Was ist 3/4 + 1/4?", options: ["1/2", "1", "4/8", "3/4"], correctAnswer: "1", hint: "Gleiche Nenner – einfach die Zähler addieren! 🙂", difficulty: 1 },
+  { id: "m2", subject: "math", type: "multiple_choice", question: "Löse: 2x + 6 = 14", options: ["x = 3", "x = 4", "x = 5", "x = 8"], correctAnswer: "x = 4", hint: "Erst -6, dann durch 2 teilen", difficulty: 2 },
+  { id: "m3", subject: "math", type: "multiple_choice", question: "Was ist 0,25 als Bruch?", options: ["1/2", "1/3", "1/4", "1/5"], correctAnswer: "1/4", hint: "25 von 100 – vereinfache! 🙂", difficulty: 1 },
+  { id: "m4", subject: "math", type: "multiple_choice", question: "Wie viel Prozent sind 3 von 12?", options: ["20%", "25%", "30%", "33%"], correctAnswer: "25%", hint: "3 ÷ 12 = ? Dann mal 100", difficulty: 2 },
+  { id: "m5", subject: "math", type: "multiple_choice", question: "Ein Dreieck hat Winkel von 60° und 80°. Wie groß ist der dritte Winkel?", options: ["30°", "40°", "50°", "60°"], correctAnswer: "40°", hint: "Alle Winkel zusammen = 180°", difficulty: 2 },
+  { id: "m6", subject: "math", type: "multiple_choice", question: "Was ist 2/3 × 3/4?", options: ["6/12", "1/2", "5/7", "2/4"], correctAnswer: "1/2", hint: "Zähler × Zähler, Nenner × Nenner, dann kürzen!", difficulty: 2 },
+  { id: "m7", subject: "math", type: "multiple_choice", question: "Berechne: (-3) + 7", options: ["10", "-10", "4", "-4"], correctAnswer: "4", hint: "Vom negativen Bereich 7 Schritte nach rechts", difficulty: 1 },
+  { id: "m8", subject: "math", type: "multiple_choice", question: "Was ist 5² ?", options: ["10", "20", "25", "50"], correctAnswer: "25", hint: "5 × 5 = ?", difficulty: 1 },
+  { id: "m9", subject: "math", type: "multiple_choice", question: "Wie viel ist 15% von 200?", options: ["15", "20", "25", "30"], correctAnswer: "30", hint: "200 × 0,15 = ?", difficulty: 2 },
+  { id: "m10", subject: "math", type: "multiple_choice", question: "Was ist der Umfang eines Quadrats mit Seitenlänge 7 cm?", options: ["14 cm", "21 cm", "28 cm", "49 cm"], correctAnswer: "28 cm", hint: "Umfang = 4 × Seite", difficulty: 1 },
+  { id: "m11", subject: "math", type: "multiple_choice", question: "Löse: 5x = 35", options: ["x = 5", "x = 6", "x = 7", "x = 8"], correctAnswer: "x = 7", hint: "Teile beide Seiten durch 5", difficulty: 1 },
+  { id: "m12", subject: "math", type: "multiple_choice", question: "Was ist 1/2 + 1/3?", options: ["2/5", "5/6", "1/5", "3/6"], correctAnswer: "5/6", hint: "Finde den gemeinsamen Nenner: 6", difficulty: 2 },
+  { id: "m13", subject: "math", type: "multiple_choice", question: "Was ist die Fläche eines Rechtecks mit 8 cm × 5 cm?", options: ["13 cm²", "26 cm²", "40 cm²", "80 cm²"], correctAnswer: "40 cm²", hint: "Fläche = Länge × Breite", difficulty: 1 },
+  { id: "m14", subject: "math", type: "multiple_choice", question: "Berechne: (-4) × (-3)", options: ["-12", "12", "-7", "7"], correctAnswer: "12", hint: "Minus mal Minus = Plus!", difficulty: 2 },
+  { id: "m15", subject: "math", type: "multiple_choice", question: "Was ist 3/5 als Dezimalzahl?", options: ["0,35", "0,5", "0,6", "0,75"], correctAnswer: "0,6", hint: "3 ÷ 5 = ?", difficulty: 1 },
+  { id: "m16", subject: "math", type: "multiple_choice", question: "Löse: x/4 = 9", options: ["x = 13", "x = 27", "x = 36", "x = 45"], correctAnswer: "x = 36", hint: "Multipliziere beide Seiten mit 4", difficulty: 2 },
+  { id: "m17", subject: "math", type: "multiple_choice", question: "Wie viele Grad hat ein rechter Winkel?", options: ["45°", "60°", "90°", "180°"], correctAnswer: "90°", hint: "Denke an die Ecke eines Blattes Papier", difficulty: 1 },
+  { id: "m18", subject: "math", type: "multiple_choice", question: "Was ist √49?", options: ["6", "7", "8", "9"], correctAnswer: "7", hint: "Welche Zahl mal sich selbst ergibt 49?", difficulty: 1 },
+  { id: "m19", subject: "math", type: "multiple_choice", question: "Berechne: 3/4 - 1/2", options: ["1/4", "1/2", "2/4", "1/8"], correctAnswer: "1/4", hint: "Mache erst gleiche Nenner: 3/4 - 2/4", difficulty: 2 },
+  { id: "m20", subject: "math", type: "multiple_choice", question: "Ein Kreis hat einen Radius von 5 cm. Was ist der Durchmesser?", options: ["5 cm", "10 cm", "15 cm", "25 cm"], correctAnswer: "10 cm", hint: "Durchmesser = 2 × Radius", difficulty: 1 },
+  { id: "m21", subject: "math", type: "multiple_choice", question: "Was ist 2³?", options: ["5", "6", "8", "9"], correctAnswer: "8", hint: "2 × 2 × 2 = ?", difficulty: 1 },
+  { id: "m22", subject: "math", type: "multiple_choice", question: "Löse: 3x - 5 = 10", options: ["x = 3", "x = 5", "x = 7", "x = 15"], correctAnswer: "x = 5", hint: "Erst +5, dann durch 3 teilen", difficulty: 2 },
 ];
 
-export function getRandomQuestions(subject: "latin" | "math", count: number): Question[] {
+export function getRandomQuestions(subject: "latin" | "math", count: number, completedIds: string[]): Question[] {
   const pool = subject === "latin" ? LATIN_QUESTIONS : MATH_QUESTIONS;
-  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+
+  // Filter out completed questions; if all done, reset
+  let available = pool.filter(q => !completedIds.includes(q.id));
+  if (available.length < count) {
+    available = [...pool];
+  }
+
+  const shuffled = available.sort(() => Math.random() - 0.5);
   return shuffled.slice(0, Math.min(count, shuffled.length));
 }
 

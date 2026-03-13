@@ -8,24 +8,52 @@ interface GameState {
   correctToday: number;
   totalToday: number;
   lastPlayedDate: string | null;
+  completedQuestionIds: string[];
 }
 
 const STORAGE_KEY = "rpg-learn-state";
+
+function getTodayStr() {
+  return new Date().toDateString();
+}
+
+function getYesterdayStr() {
+  return new Date(Date.now() - 86400000).toDateString();
+}
 
 function loadState(): GameState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-      const state = JSON.parse(raw);
-      // Reset daily stats if it's a new day
-      const today = new Date().toDateString();
+      const state = JSON.parse(raw) as GameState;
+      const today = getTodayStr();
+
+      // Ensure completedQuestionIds exists (migration)
+      if (!Array.isArray(state.completedQuestionIds)) {
+        state.completedQuestionIds = [];
+      }
+
+      // Calculate streak on load based on lastPlayedDate
       if (state.lastPlayedDate !== today) {
-        return { ...state, todayCompleted: false, correctToday: 0, totalToday: 0 };
+        // New day - reset daily stats
+        const isYesterday = state.lastPlayedDate === getYesterdayStr();
+        return {
+          ...state,
+          todayCompleted: false,
+          correctToday: 0,
+          totalToday: 0,
+          // If they missed more than yesterday, streak resets on next completion
+          streak: isYesterday ? state.streak : (state.lastPlayedDate ? 0 : state.streak),
+        };
       }
       return state;
     }
   } catch { /* ignore */ }
-  return { xp: 0, streak: 0, todayCompleted: false, correctToday: 0, totalToday: 0, lastPlayedDate: null };
+  return {
+    xp: 0, streak: 0, todayCompleted: false,
+    correctToday: 0, totalToday: 0, lastPlayedDate: null,
+    completedQuestionIds: [],
+  };
 }
 
 function saveState(state: GameState) {
@@ -35,12 +63,15 @@ function saveState(state: GameState) {
 export function useGameState() {
   const [state, setState] = useState<GameState>(loadState);
 
-  const addXP = useCallback((correct: boolean) => {
+  const addXP = useCallback((correct: boolean, questionId?: string) => {
     setState(prev => {
-      const next = {
+      const next: GameState = {
         ...prev,
         totalToday: prev.totalToday + 1,
         ...(correct ? { xp: prev.xp + XP_PER_CORRECT, correctToday: prev.correctToday + 1 } : {}),
+        completedQuestionIds: questionId && !prev.completedQuestionIds.includes(questionId)
+          ? [...prev.completedQuestionIds, questionId]
+          : prev.completedQuestionIds,
       };
       saveState(next);
       return next;
@@ -49,13 +80,33 @@ export function useGameState() {
 
   const completeDailyMission = useCallback(() => {
     setState(prev => {
-      const today = new Date().toDateString();
-      const yesterday = new Date(Date.now() - 86400000).toDateString();
-      const streakContinues = prev.lastPlayedDate === yesterday || prev.lastPlayedDate === today;
+      const today = getTodayStr();
+
+      // Don't increase streak if already completed today
+      if (prev.todayCompleted && prev.lastPlayedDate === today) {
+        return prev;
+      }
+
+      const yesterday = getYesterdayStr();
+      const loggedInYesterday = prev.lastPlayedDate === yesterday;
+      const alreadyToday = prev.lastPlayedDate === today;
+
+      let newStreak: number;
+      if (alreadyToday) {
+        // Same day, no streak change
+        newStreak = prev.streak;
+      } else if (loggedInYesterday) {
+        // Consecutive day
+        newStreak = prev.streak + 1;
+      } else {
+        // Missed a day (or first time)
+        newStreak = 1;
+      }
+
       const next: GameState = {
         ...prev,
         xp: prev.xp + XP_DAILY_BONUS,
-        streak: streakContinues ? prev.streak + 1 : 1,
+        streak: newStreak,
         todayCompleted: true,
         lastPlayedDate: today,
       };
